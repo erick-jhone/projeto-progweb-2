@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h4 th:text="${msg}"></h4>
+
+<table class="table" border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th colspan="2">Ações</th>
+    </tr>
+    </thead>
+    <tr th:each="p : ${pessoas}">
+        <td th:text="${p.id}"> </td>
+        <td th:text="${p.nome}"> </td>
+        <td th:text="${p.cnpj}"> </td>
+        <td> <a th:href="@{/pessoa/juridica/edit/{id}(id=${p.id})}">Editar</a> </td>
+        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/pessoas/remove/{id}(id=${p.id})}">Excluir</a> </td>
+    </tr>
+</table>
+
+</body>
+</html>

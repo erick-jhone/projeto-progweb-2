@@ -9,9 +9,9 @@ INSERT INTO pessoa (nome, tipo, cpf) VALUES ('João Silva', 'F', '12345678901'),
 
 
 insert into venda (pessoa_id, data) values (1, '2024-03-05 10:00:00')
-insert into venda (pessoa_id, data) values (2,'2024-03-06 10:00:00')
-insert into venda (pessoa_id, data) values (1,'2024-03-07 10:00:00')
-insert into venda (pessoa_id, data) values (1,'2024-03-08 10:00:00')
+insert into venda (pessoa_id, data) values (3, '2024-03-06 10:00:00')
+insert into venda (pessoa_id, data) values (3, '2024-03-07 10:00:00')
+insert into venda (pessoa_id, data) values (2, '2024-03-08 10:00:00')
 
 
 
