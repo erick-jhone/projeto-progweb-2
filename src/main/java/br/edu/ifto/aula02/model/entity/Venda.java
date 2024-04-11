@@ -15,9 +15,12 @@ public class Venda implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-
     private Long id;
     private LocalDateTime data;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 
     @OneToMany(mappedBy = "venda")
     private List<ItemVenda> itensVenda;
@@ -30,5 +33,8 @@ public class Venda implements Serializable {
 
         return total;
     }
+
+
+
 
 }
