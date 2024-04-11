@@ -8,12 +8,16 @@
 <body>
 
 <h1>FORM</h1>
-<form th:action="${pessoa.id == null} ? @{/pessoa/save} : @{/pessoa/update}" th:object="${pessoa}"
+<form th:action="${pessoa.id == null} ? @{/pessoa/fisica/save} : @{/pessoa/fisica/update}" th:object="${pessoa}"
       method="post">
-<!--    <input type="hidden" th:field="*{id}">-->
-<!--    <br>-->
-<!--    <input type="text" th:field="*{nome}"  placeholder="Nome">-->
-    <input type="text" th:field="*{cpf}" placeholder="CPF">
+    <input type="hidden" th:field="*{id}">
+    <label for="tipo">Tipo:</label>
+    <select id="tipo" name="tipo">
+        <option value="F">Pessoa Física</option>
+    </select>
+    <br>
+    <input type="text" th:field="*{nome}"  placeholder="Nome">
+    <input type="text"  placeholder="CPF">
     <input type="submit" value="Enviar">
 </form>
 

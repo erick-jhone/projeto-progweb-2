@@ -25,8 +25,9 @@ public class PessoaFisicaController {
     PessoaFisicaRepository repository;
 
     @GetMapping("/form")
-    public String form(Produto produto){
-        return "/pessoa-fisica/form";
+    public ModelAndView formulario(ModelMap model) {
+        model.addAttribute("pessoa", new Pessoa());
+        return new ModelAndView("/pessoa-fisica/form"); //caminho para a view
     }
 
     @PostMapping("/save")
