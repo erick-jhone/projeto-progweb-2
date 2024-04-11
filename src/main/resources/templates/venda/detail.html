@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Venda</title>
+</head>
+<body>
+
+<table class="table" border="1">
+    <thead>
+    <tr>
+        <th>Cod Interno</th>
+        <th>Descrição</th>
+        <th>Quantidade</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tr th:each="i : ${itens}">
+        <td th:text="${i.produto.id}"> </td>
+        <td th:text="${i.produto.descricao}"> </td>
+        <td th:text="${i.quantidade}"> </td>
+        <td th:text="${i.total()}"></td>
+    </tr>
+
+    <tr>
+        <th>Total da venda</th>
+        <td th:text="${itens.get(0).venda.total}" colspan="3" style="text-align: right;"></td>
+    </tr>
+</table>
+
+</body>
+</html>
