@@ -33,12 +33,12 @@ public class PessoaFisicaRepository {
     }
 
     public void remove(Long id){
-        Pessoa p = em.find(PessoaFisica.class, id);
-        em.remove(p);
+        PessoaFisica pessoaFisica = em.find(PessoaFisica.class, id);
+        em.remove(pessoaFisica);
     }
 
-    public void update(Pessoa pessoa){
-        em.merge(pessoa);
+    public void update(PessoaFisica pessoaFisica){
+        em.merge(pessoaFisica);
     }
 
 

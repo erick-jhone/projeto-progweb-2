@@ -22,7 +22,7 @@
         <td th:text="${p.nome}"> </td>
         <td th:text="${p.cnpj}"> </td>
         <td> <a th:href="@{/pessoa/juridica/edit/{id}(id=${p.id})}">Editar</a> </td>
-        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/pessoas/remove/{id}(id=${p.id})}">Excluir</a> </td>
+        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/pessoa/juridica/remove/{id}(id=${p.id})}">Excluir</a> </td>
     </tr>
 </table>
 

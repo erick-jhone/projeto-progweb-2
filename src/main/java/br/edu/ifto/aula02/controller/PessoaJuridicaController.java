@@ -2,6 +2,7 @@ package br.edu.ifto.aula02.controller;
 
 import br.edu.ifto.aula02.model.dao.PessoaJuridicaRepository;
 import br.edu.ifto.aula02.model.entity.Pessoa;
+import br.edu.ifto.aula02.model.entity.PessoaFisica;
 import br.edu.ifto.aula02.model.entity.PessoaJuridica;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class PessoaJuridicaController {
     PessoaJuridicaRepository repository;
 
     @GetMapping("/form")
-    public String form(Pessoa pessoa) {
-        return "/pessoa/form";
+    public String form(PessoaJuridica pessoaJuridica) {
+        return "/pessoa-juridica/form";
     }
 
     @PostMapping("/save")
@@ -35,15 +36,29 @@ public class PessoaJuridicaController {
 
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") Long id, ModelMap model) {
-        model.addAttribute("pessoa", repository.pessoa(id));
-        return new ModelAndView("/pessoa/form");
+        model.addAttribute("pessoaJuridica", repository.pessoa(id));
+        return new ModelAndView("/pessoa-juridica/form");
     }
 
     @GetMapping("/list")
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("msg","Lista de Pessoas Jurídicas");
         model.addAttribute("pessoas", repository.pessoas());
-        return new ModelAndView("/pessoa-juridica/list"); //caminho para a view
+        return new ModelAndView("/pessoa-juridica/list");
     }
+
+    @GetMapping("/remove/{id}")
+    public ModelAndView remove(@PathVariable("id") Long id){
+        repository.remove(id);
+        return new ModelAndView("redirect:/pessoa/juridica/list");
+    }
+
+
+    @PostMapping("/update")
+    public ModelAndView update(PessoaJuridica pessoaJuridica) {
+        repository.update(pessoaJuridica);
+        return new ModelAndView("redirect:/pessoa/juridica/list");
+    }
+
 
 }

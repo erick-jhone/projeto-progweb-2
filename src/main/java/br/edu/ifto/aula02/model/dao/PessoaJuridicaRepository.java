@@ -28,8 +28,8 @@ public class PessoaJuridicaRepository {
     }
 
     public void remove(Long id){
-        PessoaJuridica p = em.find(PessoaJuridica.class, id);
-        em.remove(p);
+        PessoaJuridica pessoaJuridica = em.find(PessoaJuridica.class, id);
+        em.remove(pessoaJuridica);
     }
 
     public void update(PessoaJuridica pessoaJuridica){

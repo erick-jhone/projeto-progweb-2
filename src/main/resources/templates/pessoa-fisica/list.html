@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>TODO supply a title</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
 </head>
 <body>
 
-<h1>FORM</h1>
-<form th:action="${pessoa.id == null} ? @{/pessoa/juridica/save} : @{/pessoa/juridica/update}" th:object="${pessoa}"
-      method="post">
-    <input type="hidden" th:field="*{id}">
-    <label for="tipo">Tipo:</label>
-    <select id="tipo" name="tipo">
-        <option value="J">Pessoa Juridica</option>
-    </select>
-    <br>
-    <input type="text" th:field="*{nome}"  placeholder="Nome">
-    <input type="text"  placeholder="CNPJ">
-    <input type="submit" value="Enviar">
-</form>
+<h4 th:text="${msg}"></h4>
+
+<table class="table" border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th colspan="2">Ações</th>
+    </tr>
+    </thead>
+    <tr th:each="p : ${pessoas}">
+        <td th:text="${p.id}"> </td>
+        <td th:text="${p.nome}"> </td>
+        <td th:text="${p.cpf}"> </td>
+        <td> <a th:href="@{/pessoa/fisica/edit/{id}(id=${p.id})}">Editar</a> </td>
+        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/pessoa/fisica/remove/{id}(id=${p.id})}">Excluir</a> </td>
+    </tr>
+</table>
 
 </body>
 </html>

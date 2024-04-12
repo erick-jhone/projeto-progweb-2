@@ -9,6 +9,28 @@
 <table class="table" border="1">
     <thead>
     <tr>
+        <td colspan="2" style="text-align: center;" th:text="'Venda N° ' + ${itens.get(0).venda.id.toString()}"></td>
+        <td colspan="4" style="text-align: center;" th:text="${itens.get(0).venda.data.toLocalDate().toString()} + ' ' + ${itens.get(0).venda.data.toLocalTime().toString()}"></td>
+    </tr>
+    <tr>
+        <th>Cliente</th>
+        <td th:text="${itens.get(0).venda.pessoa.nome}" colspan="3" style="text-align: center"></td>
+    <tr>
+        <th th:if="${itens.get(0).venda.pessoa instanceof T(br.edu.ifto.aula02.model.entity.PessoaFisica)}">CPF</th>
+        <th th:if="${itens.get(0).venda.pessoa instanceof T(br.edu.ifto.aula02.model.entity.PessoaJuridica)}">CNPJ</th>
+        <td colspan="3" style="text-align: center;">
+        <span th:if="${itens.get(0).venda.pessoa instanceof T(br.edu.ifto.aula02.model.entity.PessoaFisica)}">
+            <span th:text="${itens.get(0).venda.pessoa.cpf}"></span>
+        </span>
+            <span th:if="${itens.get(0).venda.pessoa instanceof T(br.edu.ifto.aula02.model.entity.PessoaJuridica)}">
+            <span th:text="${itens.get(0).venda.pessoa.cnpj}"></span>
+        </span>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4" style="text-align: center;">Dados dos Produtos</th>
+    </tr>
+    <tr>
         <th>Cod Interno</th>
         <th>Descrição</th>
         <th>Quantidade</th>
