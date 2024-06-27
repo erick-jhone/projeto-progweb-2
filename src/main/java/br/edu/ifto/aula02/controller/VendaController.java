@@ -30,8 +30,8 @@ public class VendaController {
     @Autowired
     ProdutoRepository productRepository;
 
-    @Autowired
-    private Venda venda;
+//    @Autowired
+//    private Venda venda;
 
     @GetMapping("/listarVendas")
     public ModelAndView listar(ModelMap model){
