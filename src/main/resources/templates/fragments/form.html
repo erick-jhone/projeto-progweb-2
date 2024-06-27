@@ -8,7 +8,7 @@
 
 <main>
 
-    <form class="container" th:action="${pessoaFisica.id == null} ? @{/pessoa/fisica/save} : @{/pessoa/fisica/update}"
+    <form class="container" th:action="${pessoaFisica.id == null} ? @{/pessoas/save} : @{/pessoas/update}"
           th:object="${pessoaFisica}" method="post">
 
         <div class="form-row">

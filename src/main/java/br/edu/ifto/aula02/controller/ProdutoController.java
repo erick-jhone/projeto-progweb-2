@@ -33,6 +33,12 @@ public class ProdutoController {
         return new ModelAndView("/produto/list");
     }
 
+    @GetMapping("/catalog")
+    public ModelAndView goToCatalog(ModelMap model){
+        model.addAttribute("produtos", repository.produtos());
+        return new ModelAndView("/produto/catalog");
+    }
+
     @PostMapping("/save")
     public ModelAndView save(Produto produto){
         repository.save(produto);

@@ -3,11 +3,13 @@ package br.edu.ifto.aula02.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Scope;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Scope("session")
 @Entity
 @Getter
 @Setter

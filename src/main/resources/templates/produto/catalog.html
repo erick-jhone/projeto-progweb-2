@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+
+<head th:replace="~{fragments/head :: head(~{})}"></head>
+
+
+    <title>Catálogp</title>
+</head>
+<body>
+<main class="container">
+    <h3 class="mt-3">Catálogo</h3>
+    <table class="table" border="1">
+        <thead style="background-color: #60e3cc;">
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Quantidade</th>
+            <th>Operação</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="p : ${produtos}">
+            <td th:text="${p.descricao}"></td>
+            <td th:text="${#numbers.formatCurrency(p.valor)}"></td>
+            <form class="container" th:action="@{/venda/didTapAdd}" th:object="${item}" method="post">
+                <input type="hidden" th:name="produto.id" th:value="${p.id}">
+                <td><input class="form-control" type="number" th:name="quantidade" th:value="${quantidade}" min="1" max="99" style="width: 3cm;"></td>
+                <td>
+                    <button type="submit" class="btn">
+                        <img src="/img/add-button.png" alt="Add Carrinho" style="width: 30px; height: 30px;">
+                    </button>
+                </td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
